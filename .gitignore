@@ -1,0 +1,9 @@
+# Archivos ejecutables
+*.exe
+
+# Iconos generados
+*.ico
+
+# Archivos de objeto (temporales de compilación)
+*.o
+*.obj
