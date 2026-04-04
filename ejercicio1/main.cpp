@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <algorithm> // Para std::next_permutation y std::sort
-#include <chrono>    // Para medir el tiempo de ejecución
+#include <algorithm> 
+#include <chrono>   
 
 using namespace std;
 
@@ -16,8 +16,8 @@ int main() {
         cin >> A[i];
     }
 
-    // 1. OBLIGATORIO: Ordenar el arreglo ascendentemente.
-    // Esto garantiza que empecemos desde la permutación más pequeña (ej: 1 3 4)
+    // 1. Ordenar el arreglo ascendentemente.
+    // Esto garantiza que empecemos desde la permutación más pequeña
     sort(A.begin(), A.end());
 
     long long total_generadas = 0;
@@ -31,7 +31,7 @@ int main() {
         total_generadas++;
         bool valida = true;
 
-        // 3. Aplicar el filtro de restricción (Actividad 2)
+        // 3. Aplicar el filtro de restricción
         for (int i = 0; i < n - 1; i++) {
             if (A[i] > 2 * A[i+1]) {
                 valida = false;
@@ -54,7 +54,7 @@ int main() {
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> duration = end - start;
 
-    // 4. Reporte final (Actividad 3)
+    // 4. Reporte final
     cout << "--------------------------------\n";
     cout << "total_generadas = " << total_generadas << "\n";
     cout << "total_validas   = " << total_validas << "\n";
