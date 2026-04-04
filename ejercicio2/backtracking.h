@@ -25,4 +25,11 @@ int backtrackingCounting(const std::vector<std::vector<int>>& adj, int k, int n)
  */
 int backtrackingMeasured(const std::vector<std::vector<int>>& adj, int k, int n, double& tiempoMs);
 
+/**
+ * Obtiene la primera k-coloracion valida encontrada por backtracking.
+ * 
+ * @return Vector con los colores de la primera solucion, o vector vacio si no existe
+ */
+std::vector<int> backtrackingPrimeraSolucion();
+
 #endif

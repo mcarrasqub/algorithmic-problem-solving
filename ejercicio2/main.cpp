@@ -30,6 +30,14 @@ void dibujarGrafo(const string& tipo) {
     }
 }
 
+void imprimirPrimeraSolucion(const std::vector<int>& colores, int n) {
+    for (int v = 0; v < n; v++) {
+        cout << "color[" << v << "]=" << colores[v];
+        if (v < n - 1) cout << " ";
+    }
+    cout << endl;
+}
+
 int main() {
     // Grafo 1: Ciclo C4 (n=4, aristas: 0-1, 1-2, 2-3, 3-0), k=3
     vector<vector<int>> grafo1 = {
@@ -67,6 +75,15 @@ int main() {
     cout << "Total de 3-coloraciones (Fuerza Bruta): " << resultadoBF1 << endl;
     cout << "Total de 3-coloraciones (Backtracking): " << resultadoBT1 << endl;
     cout << "Fuerza Bruta confirma: " << resultadoBF1 << endl;
+    
+    // Imprimir primera solucion de backtracking
+    if (resultadoBT1 > 0) {
+        cout << "Primera solucion (Backtracking):" << endl;
+        vector<int> primeraSol1 = backtrackingPrimeraSolucion();
+        imprimirPrimeraSolucion(primeraSol1, n1);
+    } else {
+        cout << "No existe una 3-coloracion valida" << endl;
+    }
     cout << endl;
     
     // Prueba Grafo 2: K4
@@ -82,14 +99,23 @@ int main() {
     cout << "Total de 4-coloraciones (Fuerza Bruta): " << resultadoBF2 << endl;
     cout << "Total de 4-coloraciones (Backtracking): " << resultadoBT2 << endl;
     cout << "Fuerza Bruta confirma: " << resultadoBF2 << endl;
+    
+    // Imprimir primera solucion de backtracking
+    if (resultadoBT2 > 0) {
+        cout << "Primera solucion (Backtracking):" << endl;
+        vector<int> primeraSol2 = backtrackingPrimeraSolucion();
+        imprimirPrimeraSolucion(primeraSol2, n2);
+    } else {
+        cout << "No existe una 4-coloracion valida" << endl;
+    }
     cout << endl;
     
     // Tabla comparativa de tiempos
     cout << "================== TABLA COMPARATIVA DE TIEMPOS ==================" << endl;
     cout << endl;
     cout << setw(20) << left << "Algoritmo"
-         << setw(25) << left << "Grafo 1 C4 (ms)"
-         << setw(25) << left << "Grafo 2 K4 (ms)"
+         << setw(25) << left << "Grafo 1 C4 (s)"
+         << setw(25) << left << "Grafo 2 K4 (s)"
          << setw(20) << left << "Coloraciones"
          << endl;
     cout << string(90, '-') << endl;

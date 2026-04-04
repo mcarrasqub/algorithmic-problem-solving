@@ -9,6 +9,8 @@ using namespace std;
 static int n_global, k_global;
 static vector<vector<int>> ady_global;
 static vector<int> color_global;
+static vector<int> primera_solucion_global;
+static bool primera_guardada_global = false;
 static long long total_soluciones_global = 0;
 
 // ─────────────────────────────────────────
@@ -35,6 +37,12 @@ static void bt(int v) {
     if (v == n_global) {
         // Llegamos al final: todos los vertices tienen color valido
         total_soluciones_global++;
+        
+        // Guardar la primera solucion encontrada
+        if (!primera_guardada_global) {
+            primera_solucion_global = color_global;
+            primera_guardada_global = true;
+        }
         return;
     }
 
@@ -62,6 +70,8 @@ int backtrackingCounting(const vector<vector<int>>& adj, int k, int n) {
     k_global = k;
     ady_global = adj;
     color_global.assign(n, 0);
+    primera_solucion_global.clear();
+    primera_guardada_global = false;
     total_soluciones_global = 0;
 
     bt(0);
@@ -88,4 +98,13 @@ int backtrackingMeasured(const vector<vector<int>>& adj, int k, int n, double& t
     tiempoMs = duracion.count();
 
     return resultado;
+}
+
+/**
+ * Obtiene la primera k-coloracion valida encontrada por backtracking.
+ * 
+ * @return Vector con los colores de la primera solucion, o vector vacio si no existe
+ */
+std::vector<int> backtrackingPrimeraSolucion() {
+    return primera_solucion_global;
 }
