@@ -5,10 +5,8 @@
 using namespace std;
 
 /**
- * Verifica si una asignacion de colores es una k-coloracion valida.
- * Una coloracion es valida si ningun par de vertices adyacentes
- * comparten el mismo color.
- * 
+ * verifica si una asignacion de colores es una k-coloracion valida.
+ *
  * @param adj Matriz de adyacencia (adj[i][j] = 1 si hay arista entre i y j)
  * @param colores Vector de colores asignados a cada vertice
  * @param n Numero de vertices
@@ -17,7 +15,7 @@ using namespace std;
 bool esColoracionValida(const vector<vector<int>>& adj, const vector<int>& colores, int n) {
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++) {
-            // Si hay arista entre i y j y comparten color, no es valida
+            //si hay arista entre i y j y comparten color, no es valida
             if (adj[i][j] == 1 && colores[i] == colores[j]) {
                 return false;
             }
@@ -27,8 +25,7 @@ bool esColoracionValida(const vector<vector<int>>& adj, const vector<int>& color
 }
 
 /**
- * Cuenta todas las k-coloraciones validas usando fuerza bruta.
- * Itera sobre todas las k^n combinaciones posibles de asignacion de colores.
+ * itera sobre todas las k^n combinaciones posibles de asignacion de colores.
  * 
  * @param adj Matriz de adyacencia (n x n)
  * @param k Numero de colores disponibles (colores de 1 a k)
@@ -38,8 +35,8 @@ bool esColoracionValida(const vector<vector<int>>& adj, const vector<int>& color
 int bruteForceCounting(const vector<vector<int>>& adj, int k, int n) {
     int totalValidas = 0;
     
-    // Generar todas las k^n combinaciones posibles
-    // Usamos indices que van de 0 a k^n - 1
+    //generar todas las k^n combinaciones posibles
+    //usamos indices que van de 0 a k^n - 1
     long long totalCombinaciones = 1;
     for (int i = 0; i < n; i++) {
         totalCombinaciones *= k;
@@ -48,15 +45,15 @@ int bruteForceCounting(const vector<vector<int>>& adj, int k, int n) {
     for (long long i = 0; i < totalCombinaciones; i++) {
         vector<int> colores(n);
         
-        // Convertir el numero i a una asignacion de colores en base k
+        //convertir el numero i a una asignacion de colores en base k
         long long temp = i;
         for (int j = 0; j < n; j++) {
-            // Los colores van de 1 a k (no de 0 a k-1)
+            //los colores van de 1 a k (no de 0 a k-1)
             colores[j] = (temp % k) + 1;
             temp /= k;
         }
         
-        // Verificar si esta asignacion es una coloracion valida
+        //verificar si esta asignacion es una coloracion valida
         if (esColoracionValida(adj, colores, n)) {
             totalValidas++;
         }
@@ -66,7 +63,7 @@ int bruteForceCounting(const vector<vector<int>>& adj, int k, int n) {
 }
 
 /**
- * Ejecuta el conteo de k-coloraciones con fuerza bruta y mide el tiempo.
+ *ejecuta el conteo de k-coloraciones con fuerza bruta y mide el tiempo.
  * 
  * @param adj Matriz de adyacencia
  * @param k Numero de colores

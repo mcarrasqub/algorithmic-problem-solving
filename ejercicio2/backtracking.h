@@ -4,8 +4,8 @@
 #include <vector>
 
 /**
- * Cuenta todas las k-coloraciones validas usando backtracking.
- * Utiliza poda para evitar explorar ramas innecesarias.
+ * cuenta todas las k-coloraciones validas usando backtracking.
+ * utiliza poda para evitar explorar ramas innecesarias.
  * 
  * @param adj Matriz de adyacencia (n x n)
  * @param k Numero de colores disponibles (colores de 1 a k)
@@ -15,7 +15,7 @@
 int backtrackingCounting(const std::vector<std::vector<int>>& adj, int k, int n);
 
 /**
- * Ejecuta el conteo de k-coloraciones con backtracking y mide el tiempo.
+ * ejecuta el conteo de k-coloraciones con backtracking y mide el tiempo.
  * 
  * @param adj Matriz de adyacencia
  * @param k Numero de colores
@@ -26,9 +26,9 @@ int backtrackingCounting(const std::vector<std::vector<int>>& adj, int k, int n)
 int backtrackingMeasured(const std::vector<std::vector<int>>& adj, int k, int n, double& tiempoMs);
 
 /**
- * Obtiene la primera k-coloracion valida encontrada por backtracking.
+ * obtiene la primera k-coloracion valida encontrada por backtracking.
  * 
- * @return Vector con los colores de la primera solucion, o vector vacio si no existe
+ * @return vector con los colores de la primera solucion, o vector vacio si no existe
  */
 std::vector<int> backtrackingPrimeraSolucion();
 

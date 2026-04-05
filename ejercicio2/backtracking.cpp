@@ -3,9 +3,7 @@
 
 using namespace std;
 
-// ─────────────────────────────────────────
-// VARIABLES GLOBALES (PRIVADAS AL MODULO)
-// ─────────────────────────────────────────
+//variables globales
 static int n_global, k_global;
 static vector<vector<int>> ady_global;
 static vector<int> color_global;
@@ -13,12 +11,11 @@ static vector<int> primera_solucion_global;
 static bool primera_guardada_global = false;
 static long long total_soluciones_global = 0;
 
-// ─────────────────────────────────────────
+
 // FUNCION: es_seguro(v, c)
 // Pregunta: ¿puedo pintar el vertice v con el color c?
-// Respuesta: SI, si ningun vecino de v ya tiene el color c
-//            NO, si algun vecino de v ya tiene el color c
-// ─────────────────────────────────────────
+// Respuesta: si, si ningun vecino de v ya tiene el color c
+//            no, si algun vecino de v ya tiene el color c
 static bool es_seguro(int v, int c) {
     for (int u = 0; u < n_global; u++) {
         if (ady_global[v][u] == 1 && color_global[u] == c) {
@@ -28,17 +25,15 @@ static bool es_seguro(int v, int c) {
     return true;
 }
 
-// ─────────────────────────────────────────
-// FUNCION: bt(v) <-- backtracking recursivo
+// funcion: bt(v) <- backtracking recursivo
 // Intenta asignar un color al vertice v, luego sigue con v+1, v+2, etc.
-// Si no puede asignar ningun color a v, retrocede (backtrack)
-// ─────────────────────────────────────────
+//si no se puede asignar ningun color a v, retrocede  backtrack 
 static void bt(int v) {
     if (v == n_global) {
-        // Llegamos al final: todos los vertices tienen color valido
+        //llegamos al final: todos los vertices tienen un color valido
         total_soluciones_global++;
         
-        // Guardar la primera solucion encontrada
+        //guardar la primera solucion encontrada
         if (!primera_guardada_global) {
             primera_solucion_global = color_global;
             primera_guardada_global = true;
@@ -46,19 +41,19 @@ static void bt(int v) {
         return;
     }
 
-    // Intentamos cada color del 1 al k para el vertice v
+    //intentamos cada color del 1 al k para el vertice v
     for (int c = 1; c <= k_global; c++) {
         if (es_seguro(v, c)) {
             color_global[v] = c;
             bt(v + 1);
-            color_global[v] = 0;  // BACKTRACK
+            color_global[v] = 0;  // aqui backtrack 
         }
     }
 }
 
 /**
- * Cuenta todas las k-coloraciones validas usando backtracking.
- * Utiliza poda para evitar explorar ramas innecesarias.
+ * cuenta todas las k-coloraciones validas usando backtracking
+ * utiliza poda para evitar explorar ramas innecesarias.
  * 
  * @param adj Matriz de adyacencia (n x n)
  * @param k Numero de colores disponibles (colores de 1 a k)
@@ -80,7 +75,7 @@ int backtrackingCounting(const vector<vector<int>>& adj, int k, int n) {
 }
 
 /**
- * Ejecuta el conteo de k-coloraciones con backtracking y mide el tiempo.
+ * ejecuta el conteo de k-coloraciones con backtracking y mide el tiempo.
  * 
  * @param adj Matriz de adyacencia
  * @param k Numero de colores
@@ -101,9 +96,9 @@ int backtrackingMeasured(const vector<vector<int>>& adj, int k, int n, double& t
 }
 
 /**
- * Obtiene la primera k-coloracion valida encontrada por backtracking.
+ * obtiene la primera k-coloracion valida encontrada por backtracking.
  * 
- * @return Vector con los colores de la primera solucion, o vector vacio si no existe
+ * @return vector con los colores de la primera solucion, o vector vacio si no existe
  */
 std::vector<int> backtrackingPrimeraSolucion() {
     return primera_solucion_global;

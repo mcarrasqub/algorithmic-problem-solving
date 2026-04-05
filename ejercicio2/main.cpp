@@ -39,7 +39,7 @@ void imprimirPrimeraSolucion(const std::vector<int>& colores, int n) {
 }
 
 int main() {
-    // Grafo 1: Ciclo C4 (n=4, aristas: 0-1, 1-2, 2-3, 3-0), k=3
+    //grafo 1: Ciclo C4 (n=4, aristas: 0-1, 1-2, 2-3, 3-0), k=3
     vector<vector<int>> grafo1 = {
         {0, 1, 0, 1},
         {1, 0, 1, 0},
@@ -49,7 +49,7 @@ int main() {
     int k1 = 3;
     int n1 = 4;
     
-    // Grafo 2: Completo K4 (n=4, todos conectados), k=4
+    //grafo 2: Completo K4 (n=4, todos conectados), k=4
     vector<vector<int>> grafo2 = {
         {0, 1, 1, 1},
         {1, 0, 1, 1},
@@ -62,7 +62,7 @@ int main() {
     cout << "================== COLORACION DE GRAFOS ==================" << endl;
     cout << endl;
     
-    // Prueba Grafo 1: C4
+    //prueba Grafo 1: C4
     cout << "GRAFO 1: Ciclo C4 (n=4, k=3)" << endl;
     cout << "Aristas: 0-1, 1-2, 2-3, 3-0" << endl;
     dibujarGrafo("C4");
@@ -76,7 +76,7 @@ int main() {
     cout << "Total de 3-coloraciones (Backtracking): " << resultadoBT1 << endl;
     cout << "Fuerza Bruta confirma: " << resultadoBF1 << endl;
     
-    // Imprimir primera solucion de backtracking
+    //imprimir primera solucion de backtracking
     if (resultadoBT1 > 0) {
         cout << "Primera solucion (Backtracking):" << endl;
         vector<int> primeraSol1 = backtrackingPrimeraSolucion();
@@ -86,7 +86,7 @@ int main() {
     }
     cout << endl;
     
-    // Prueba Grafo 2: K4
+    //prueba Grafo 2: K4
     cout << "GRAFO 2: Completo K4 (n=4, k=4)" << endl;
     cout << "Aristas: todos los pares de vertices" << endl;
     dibujarGrafo("K4");
@@ -100,7 +100,7 @@ int main() {
     cout << "Total de 4-coloraciones (Backtracking): " << resultadoBT2 << endl;
     cout << "Fuerza Bruta confirma: " << resultadoBF2 << endl;
     
-    // Imprimir primera solucion de backtracking
+    //imprimir primera solucion de backtracking
     if (resultadoBT2 > 0) {
         cout << "Primera solucion (Backtracking):" << endl;
         vector<int> primeraSol2 = backtrackingPrimeraSolucion();
@@ -110,7 +110,7 @@ int main() {
     }
     cout << endl;
     
-    // Tabla comparativa de tiempos
+    //tabla comparativa de tiempos
     cout << "================== TABLA COMPARATIVA DE TIEMPOS ==================" << endl;
     cout << endl;
     cout << setw(20) << left << "Algoritmo"
@@ -134,7 +134,7 @@ int main() {
     
     cout << endl;
     
-    // Validacion
+    //validacion
     if (resultadoBF1 == resultadoBT1 && resultadoBF2 == resultadoBT2) {
         cout << "VALIDACION: OK - Ambos algoritmos dan el mismo resultado" << endl;
     } else {

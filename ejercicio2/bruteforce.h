@@ -4,8 +4,7 @@
 #include <vector>
 
 /**
- * Cuenta todas las k-coloraciones validas usando fuerza bruta.
- * Itera sobre todas las k^n combinaciones posibles de asignacion de colores.
+ * itera sobre todas las k^n combinaciones posibles de asignacion de colores.
  * 
  * @param adj Matriz de adyacencia (n x n)
  * @param k Numero de colores disponibles (colores de 1 a k)
@@ -15,7 +14,7 @@
 int bruteForceCounting(const std::vector<std::vector<int>>& adj, int k, int n);
 
 /**
- * Ejecuta el conteo de k-coloraciones con fuerza bruta y mide el tiempo.
+ *ejecuta el conteo de k-coloraciones con fuerza bruta y mide el tiempo.
  * 
  * @param adj Matriz de adyacencia
  * @param k Numero de colores
