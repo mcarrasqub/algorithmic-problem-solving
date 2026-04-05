@@ -6,7 +6,7 @@ Este proyecto implementa dos ejercicios de algoritmos: Permutaciones con Restric
 
 ```
 .
-├── INFORME.md                    # Informe completo con teoria, pseudocodigo y analisis
+├── INFORME.pdf                    # Informe completo con teoria, pseudocodigo y analisis
 ├── README.md                     # Este archivo
 ├── ejercicio1/
 │   └── main.cpp                  # Programa del Ejercicio 1
@@ -41,28 +41,81 @@ sudo apt-get install build-essential
 brew install gcc
 ```
 
-## Compilacion
+## Compilación
+
+Ejecutar los comandos desde la carpeta raiz del proyecto.
+
+Si estas dentro de `ejercicio1/` o `ejercicio2/`, usa las rutas locales indicadas en la seccion "Alternativa si ya estas dentro de la carpeta".
 
 ### Ejercicio 1: Permutaciones con Restricciones
 
+**Windows (PowerShell o CMD)**
+```powershell
+g++ -O2 -std=c++17 -o ejercicio1/solucion.exe ejercicio1/main.cpp
+```
+
+**Linux/macOS**
 ```bash
-cd ejercicio1
-g++ -O2 -std=c++17 -o solucion1 main.cpp
+g++ -O2 -std=c++17 -o ejercicio1/solucion ejercicio1/main.cpp
+```
+
+**Alternativa si ya estas dentro de `ejercicio1/`**
+
+```powershell
+g++ -O2 -std=c++17 -o solucion.exe main.cpp
 ```
 
 ### Ejercicio 2: Coloracion de Grafos
 
-```bash
-cd ejercicio2
-g++ -O2 -std=c++17 -o solucion2 main.cpp backtracking.cpp bruteforce.cpp
+**Windows (PowerShell o CMD)**
+```powershell
+g++ -O2 -std=c++17 -o ejercicio2/solucion2.exe ejercicio2/main.cpp ejercicio2/backtracking.cpp ejercicio2/bruteforce.cpp
 ```
 
-## Ejecucion
+**Linux/macOS**
+```bash
+g++ -O2 -std=c++17 -o ejercicio2/solucion2 ejercicio2/main.cpp ejercicio2/backtracking.cpp ejercicio2/bruteforce.cpp
+```
+
+**Alternativa si ya estas dentro de `ejercicio2/`**
+
+```powershell
+g++ -O2 -std=c++17 -o solucion2.exe main.cpp backtracking.cpp bruteforce.cpp
+```
+
+**Si estas dentro de `ejercicio1/` y quieres compilar Ejercicio 2 sin cambiar de carpeta**
+
+```powershell
+g++ -O2 -std=c++17 -o ../ejercicio2/solucion2.exe ../ejercicio2/main.cpp ../ejercicio2/backtracking.cpp ../ejercicio2/bruteforce.cpp
+```
+
+## Ejecución
 
 ### Ejercicio 1
 
+**Windows (PowerShell)**
+```powershell
+.\ejercicio1\solucion.exe
+```
+
+**Windows (CMD)**
+```cmd
+ejercicio1\solucion.exe
+```
+
+**Linux/macOS**
 ```bash
-./solucion1
+./ejercicio1/solucion
+```
+
+**Si ya estas dentro de `ejercicio1/`**
+```powershell
+.\solucion.exe
+```
+
+**IMPORTANTE: Si tu entorno generó `gsolucion.exe` es mejor usarlo en vez de solucion.exe**
+```powershell
+.\gsolucion.exe
 ```
 
 **Entrada interactiva:**
@@ -84,8 +137,29 @@ Tiempo de ejecucion: 0.00x segundos
 
 ### Ejercicio 2
 
+**Windows (PowerShell)**
+```powershell
+.\ejercicio2\solucion2.exe
+```
+
+**Windows (CMD)**
+```cmd
+ejercicio2\solucion2.exe
+```
+
+**Linux/macOS**
 ```bash
-./solucion2
+./ejercicio2/solucion2
+```
+
+**Si ya estas dentro de `ejercicio2/`**
+```powershell
+.\solucion2.exe
+```
+
+**IMPORTANTE: Si tu entorno generó `gsolucion2.exe` es mejor usarlo en vez de solucion.exe**
+```powershell
+.\gsolucion2.exe
 ```
 
 **Salida esperada:**
@@ -142,8 +216,8 @@ VALIDACION: OK - Ambos algoritmos dan el mismo resultado
 
 4. **Parametros personalizados:** Para probar otros grafos en Ejercicio 2, modificar las matrices de adyacencia en main.cpp.
 
-## Informacion Adicional
+## Información Adicional
 
-- Analisis teorico completo: Ver [INFORME.md](INFORME.md)
+- Analisis teorico completo: Ver INFORME.pdf
 - Pseudocodigo detallado: Seccion 1.2 y 2.2 del INFORME
 - Analisis de complejidad: Apendice del INFORME
